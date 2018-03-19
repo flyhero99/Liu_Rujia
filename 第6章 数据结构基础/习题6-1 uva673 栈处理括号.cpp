@@ -22,14 +22,10 @@ int main() {
                 if(c == '(' || c == '[') s.push(c);
                 else if(c == ')' || c == ']') {
                     if(s.empty()) s.push(c);
-                    if(c == ')') {
-                        if(s.top() != '(') {}
-                        else s.pop();
-                    }
-                    else if(c == ']') {
-                        if(s.top() != '[') {}
-                        else s.pop();
-                    }
+                    else if(c == ')')
+                        if(s.top() == '(') s.pop();
+                    else if(c == ']')
+                        if(s.top() == '[') s.pop();
                 }
             }
             if(s.empty()) cout << "Yes" << endl;
